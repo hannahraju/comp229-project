@@ -1,0 +1,19 @@
+{
+  "name": "comp229-project",
+  "version": "1.0.0",
+  "description": "COMP 229 Fall 2025 Final Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannahraju/comp229-project.git"
+  },
+  "author": "Hannah Raju",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hannahraju/comp229-project/issues"
+  },
+  "homepage": "https://github.com/hannahraju/comp229-project#readme"
+}
