@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/hannahraju/comp229-project/issues"
   },
-  "homepage": "https://github.com/hannahraju/comp229-project#readme"
+  "homepage": "https://github.com/hannahraju/comp229-project#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "lodash": "^4.17.21",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.19.4"
+  }
 }
