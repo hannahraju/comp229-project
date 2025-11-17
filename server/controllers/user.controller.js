@@ -2,21 +2,29 @@ import User from '../models/user.model.js'
 import extend from 'lodash/extend.js'
 import errorHandler from './error.controller.js'
 
+
 const create = async (req, res) => {
-    const user = new User(req.body)
-
     try {
+        let user = await User.findOne({ "email": req.body.email })
+        
+        if(user){
+            return res.status(400).json({
+                message: "Account with this email address already exists"
+            })
+        }
+        user = new User(req.body)
         await user.save()
-        return res.status(200).json({
-        message: "Successfully signed up!"
-    })
-} 
+        return res.status(201).json({
+            message: "Successfully created a new account."
+        })
 
-catch (err) {
-    return res.status(400).json({
-    error: errorHandler.getErrorMessage(err)
-})
-}
+    }
+    catch(err){
+
+        return res.status(400).json({
+        error: errorHandler.getErrorMessage(err)
+        })
+    }
 }
 
 const list = async (req, res) => {

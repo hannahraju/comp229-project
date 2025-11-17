@@ -14,8 +14,7 @@ const BookSchema = new mongoose.Schema({
     },
 
     year:{
-        type: Number,
-        required: "Published year is required"
+        type: Number
     },
     
     genre:{
@@ -27,9 +26,7 @@ const BookSchema = new mongoose.Schema({
     },
 
     isbn:{
-        type: Number,
-        unique: "An item with this ISBN already exists",
-        required: "ISBN is required"
+        type: Number
     },
 
     totalcopies:{

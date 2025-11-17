@@ -1,11 +1,11 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #ffffff;
+  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,11 +22,15 @@ a:hover {
   color: #535bf2;
 }
 
-
 body {
-  margin: auto;
-  width: 600px;
-;
+  margin: 0;
+ 
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color:black;
+  color:white;
+  align-content: center;
 }
 
 h1 {
@@ -64,4 +68,86 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+nav {
+float:right;
+font-size:x-large;
+
+}
+
+
+
+
+
+
+.bg{
+  position:absolute;
+  top: -4em;
+  right: 0;
+  z-index: -1;
+  object-fit: cover;
+  height: 100vh;
+  
+}
+
+.introContent {
+  height: 100vh;
+  width: 100vw;
+  padding: 3em;
+  padding-top: 1em;
+  font-size: 3em;
+  font-weight: 700;
+  
+  justify-content: center;
+}
+
+.hello {
+  font-size: 1.75rem;
+  font-weight:100px;
+}
+
+.introName {
+  color: Blue;
+}
+
+
+.introPara {
+  font-size: 40px;
+  font-weight: 100;
+}
+
+.btn {
+  background: white;
+  margin: 1rem 0;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 2rem;
+}
+
+
+.btnImg{
+  object-fit: cover;
+  margin: 0 0.25rem;
+  height: 1rem;
+}
+
+@media screen and (max-width:480px){
+  .bg {
+    right: -20vw
+  }
+}
+
+img{
+border-radius: 90%;
+size: 40px;
+
+}
+
+html{
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-left: auto;
+  margin-right: auto;
 }

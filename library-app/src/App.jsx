@@ -5,13 +5,13 @@ import CssBaseline from '@mui/material/CssBaseline'; // Optional: resets browser
 import MainRouter from '../MainRouter';
 import theme from '../theme';
 const App = () => {
-return (
-<Router>
-<ThemeProvider theme={theme}>
-<CssBaseline /> {/* Optional but recommended for consistent baseline styles */}
-<MainRouter />
-</ThemeProvider>
-</Router>
-);
+ return (
+    <Router>
+     <ThemeProvider theme={theme}>
+     <MainRouter />
+     </ThemeProvider>
+     </Router>
+    
+ );
 };
-export default App
+export default App;

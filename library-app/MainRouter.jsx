@@ -8,6 +8,8 @@ import PrivateRoute from './lib/PrivateRoute.jsx'
 import Profile from './user/Profile.jsx'
 import EditProfile from './user/EditProfile.jsx'
 import Menu from './components/Menu.jsx'
+import BookProfile from './book/BookProfie.jsx'
+import EditBook from './book/EditBook.jsx'
 
 function MainRouter() {
     return (
@@ -21,6 +23,9 @@ function MainRouter() {
             <Route path="/user/:userId" element={<Profile/>}/>
             <Route path="/user/edit/:userId" element={<PrivateRoute><EditProfile/></PrivateRoute>}/>
             <Route path="/user/:userId" element={<Profile/>}/>
+            <Route path="/book/:bookId" element={<BookProfile/>}/>
+            <Route path="/book/edit/:bookId" element={<EditBook/>}/>
+            
             </Routes>
         </div>
     )}

@@ -1,4 +1,4 @@
-const API_BASE = '/api/users'
+const API_BASE = '/api/users/   '
 const handleResponse = async (response) => {
     try {
         const data = await response.json();
@@ -41,6 +41,7 @@ const list = async (signal) => {
         return handleError(err);
     }
 };
+
 
 const read = async ({ userId }, { t }, signal) => {
     try {
