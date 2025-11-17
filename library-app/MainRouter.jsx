@@ -1,10 +1,10 @@
 import React from 'react'
-import {Route, Routes} from 'react-router-dom'
-import Home from './core/Home'
+import { Route, Routes } from 'react-router-dom'
+import Home from './components/Home'
 const MainRouter = () => {
-return ( <div>
+return (<div>
 <Routes>
-<Route exact path="/" element={<Home />}/>
+<Route exact path="/" element={<Home />} />
 </Routes>
 </div>
 )
