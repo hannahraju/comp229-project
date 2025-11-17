@@ -59,23 +59,23 @@ if (values.NavigateToProfile) {
 return <Navigate to={`/user/${values.userId}`} />;
 }
 return (
-<Card className={classes.card}>
+<Card className={values.card}>
 <CardContent>
-<Typography variant="h6" className={classes.title}>
+<Typography variant="h6" className={values.name}>
 Edit Profile
 </Typography>
-<TextField id="name" label="Name" className={classes.textField} value={values.name} onChange={handleChange('name')} margin="normal"/><br/>
-<TextField id="email" type="email" label="Email" className={classes.textField} value={values.email} onChange={handleChange('email')} margin="normal"/><br/>
-<TextField id="password" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal"/>
+<TextField id="name" label="Name" className={values.textField} value={values.name} onChange={handleChange('name')} margin="normal"/><br/>
+<TextField id="email" type="email" label="Email" className={values.textField} value={values.email} onChange={handleChange('email')} margin="normal"/><br/>
+<TextField id="password" type="password" label="Password" className={values.textField} value={values.password} onChange={handleChange('password')} margin="normal"/>
 <br/> {
 values.error && (<Typography component="p" color="error">
-<Icon color="error" className={classes.error}>error</Icon>
+<Icon color="error" className={values.error}>error</Icon>
 {values.error}
 </Typography>)
 }
 </CardContent>
 <CardActions>
-<Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
+<Button color="primary" variant="contained" onClick={clickSubmit} className={values.submit}>Submit</Button>
 </CardActions>
 </Card>
 )}

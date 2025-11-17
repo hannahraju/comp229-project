@@ -32,6 +32,7 @@ const [books, setBooks] = useState([]);
 const[values, setValues] = useState({
     title: "",
     author: "",
+    isbn: 0,
     error: "",
 })
 
@@ -49,6 +50,7 @@ const clickSubmit = () => {
 const book = {
 title: values.title || undefined,
 author: values.author || undefined,
+isbn: values.isbn || undefined
 }
 create(book).then((data) => {
 if (data.error) {
@@ -56,6 +58,7 @@ setValues({ ...values, error: data.error });
 } else {
 setOpen(true);
 }
+window.location.reload();
 });
 };
 
@@ -137,7 +140,14 @@ value={books.author}
 onChange={handleChange("author")}
 margin="normal"
 />
-
+<TextField
+id="isbn"
+label="ISBN"
+sx={{ width: "100%", mb: 2 }}
+value={books.isbn}
+onChange={handleChange("isbn")}
+margin="normal"
+/>
 {books.error && (
 <Typography color="error" sx={{ mt: 1 }}>
 {values.error}

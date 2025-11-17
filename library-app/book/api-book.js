@@ -59,7 +59,7 @@ const read = async ({ bookId }, signal) => {
     }
 };
 
-const update = async ({ bookId }, user) => {
+const update = async ({ bookId }, book) => {
     try {
         const response = await fetch(`${API_BASE}/${bookId}`, {
         method: "PUT",

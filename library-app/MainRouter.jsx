@@ -22,7 +22,6 @@ function MainRouter() {
             <Route path="/signin" element={<Signin/>}/>
             <Route path="/user/:userId" element={<Profile/>}/>
             <Route path="/user/edit/:userId" element={<PrivateRoute><EditProfile/></PrivateRoute>}/>
-            <Route path="/user/:userId" element={<Profile/>}/>
             <Route path="/book/:bookId" element={<BookProfile/>}/>
             <Route path="/book/edit/:bookId" element={<EditBook/>}/>
             

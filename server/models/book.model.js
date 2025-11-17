@@ -13,6 +13,12 @@ const BookSchema = new mongoose.Schema({
         requied: "Author is required"
     },
 
+    isbn:{
+        type: String,
+        trim: true,
+        required: "ISBN is required",
+        unique: true,
+    },
     year:{
         type: Number
     },
@@ -23,10 +29,6 @@ const BookSchema = new mongoose.Schema({
 
     format:{
         type: String
-    },
-
-    isbn:{
-        type: Number
     },
 
     totalcopies:{
