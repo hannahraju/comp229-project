@@ -15,7 +15,7 @@ export default function Home() {
 
         <form>
             <label>
-                Your name: 
+                Name: 
                 <input
                     type="text"
                     value = {name}
@@ -23,7 +23,7 @@ export default function Home() {
                     onChange={(e) => setName(e.target.value)} /><br/>
             </label>
             <label>
-                Your email: 
+                Email: 
                 <input
                     type="text"
                     value = {email}
@@ -31,7 +31,7 @@ export default function Home() {
                     onChange={(e) => setEmail(e.target.value)} /><br/>
             </label>
             <label>
-                Your password:  
+                Password:  
                 <input
                     type="text"
                     value = {password}
@@ -39,15 +39,13 @@ export default function Home() {
 
                 
             </label>
-        <p>
-        PREVIEW <br/> 
-        Name: {name}<br/> 
-        Email: {email}<br/>
-        
-       </p>
-
-
-
+           
+        <br/>
+       
+        <button>Sign up</button>
+        <button>Get my info</button>
+        <button>Update my info</button>
+        <button>Delete my account</button>
        
         </form>
     )
