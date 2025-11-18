@@ -23,24 +23,37 @@ const UserSchema = new mongoose.Schema({
         required: "Password is required"
     },
     
-    holds:{
+    cardnumber:{
         type: Number
     },
 
-    items:{
-        type: Number
-    },
+    checkouts: [{
+        id:{
+            type: Schema.Types.ObjectId,
+            ref: 'Book'
+        },
+        duedate:{
+            type: Date,
+            default: Date.now + 14 
+        }
+    }],
 
+    holds: [{
+        id:{
+            type: Schema.Types.ObjectId,
+            ref: 'Book'
+        },
+        status:{
+            type: Boolean,
+            default: false 
+        }
+    }],
+    
     fines:{
         type: Number
 
     },
-
-    checkouts:[{
-        type: Schema.Types.ObjectId,
-        ref: 'Book'
-    }],
-    
+   
     created:{
         type: Date,
         default: Date.now

@@ -29,7 +29,7 @@ const create = async (req, res) => {
 
 const list = async (req, res) => {
     try {
-        let users = await User.find().select('name email holds items fines checkouts created updated')
+        let users = await User.find().select('name email cardnumber checkouts holds fines created updated')
         res.json(users)
     } 
 
