@@ -40,34 +40,12 @@ const list = async (req, res) => {
     }
 }
 
-const getCheckouts = async (req, res) => {
-        
-        return res.json(req.profile.checkouts)
-
-
-    /*
-    try{
-        let user = req.profile
-        if(!user){
-            return res.status(404).json({message: "User not found"})
-        }
-        res.json(user.checkouts)
-        
-    }
-
-    catch(err) {
-        return res.status(400).json({
-            error: errorHandler.getErrorMessage(err)
-        })
-    }
-        */
-}
 
 const userByID = async (req, res, next, id) => {
     try {
         let user = await User.findById(id)
         if (!user)
-        return res.status('400').json({
+        return res.status(400).json({
         error: "User not found"
     })
     req.profile = user
@@ -75,7 +53,7 @@ const userByID = async (req, res, next, id) => {
     } 
 
     catch (err) {
-        return res.status('400').json({
+        return res.status(400).json({
         error: "Could not retrieve user"
     })
     }
@@ -85,21 +63,21 @@ const read = (req, res) => {
     req.profile.salt = undefined
     return res.json(req.profile)
     }
-    const update = async (req, res) => {
-    try {
-        let user = req.profile
-        user = extend(user, req.body)
-        user.updated = Date.now()
-        await user.save()
-        user.hashed_password = undefined
-        user.salt = undefined
-        res.json(user)
-    } 
-    catch (err) {
-        return res.status(400).json({
-        error: errorHandler.getErrorMessage(err)
-    })
-    }
+const update = async (req, res) => {
+try {
+    let user = req.profile
+    user = extend(user, req.body)
+    user.updated = Date.now()
+    await user.save()
+    user.hashed_password = undefined
+    user.salt = undefined
+    res.json(user)
+} 
+catch (err) {
+    return res.status(400).json({
+    error: errorHandler.getErrorMessage(err)
+})
+}
 }
 const remove = async (req, res) => {
     try {
@@ -115,4 +93,21 @@ const remove = async (req, res) => {
     })
     }
 }
-export default { create, userByID, read, list, remove, update }
+
+const updateHolds = async(req, res) => {
+try {
+    let user = req.profile
+    let holds = req.profile.holds
+    holds.append(req.body)
+    user.updated = Date.now()
+    await user.save()
+    res.json(holds)
+} 
+catch (err) {
+    return res.status(400).json({
+    error: errorHandler.getErrorMessage(err)
+})
+}
+}
+
+export default { create, userByID, read, list, remove, update, updateHolds }

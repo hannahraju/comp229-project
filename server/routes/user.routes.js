@@ -10,6 +10,9 @@ router.route('/api/users').get(userCtrl.list)
 router.route('/api/users/:userId').get(authCtrl.requireSignin, userCtrl.read)
 router.route('/api/users/:userId').put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.update)
 router.route('/api/users/:userId').delete(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.remove)
-router.route('/api/users/:userId/checkouts').get(userCtrl.getCheckouts)
+router.route('/api/users/:userId').get(userCtrl.read)
+router.route('/api/users/:userId').put(userCtrl.update)
+router.route('/api/users/:userId').delete(userCtrl.remove)
+router.route('/api/users/:userId/holds').put(authCtrl.requireSignin, authCtrl.hasAuthorization, userCtrl.updateHolds)
 
 export default router

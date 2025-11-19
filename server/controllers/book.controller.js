@@ -43,7 +43,7 @@ const bookByID = async (req, res, next, id) => {
     try {
         let book = await Book.findById(id)
         if (!book)
-        return res.status('400').json({
+        return res.status(400).json({
         error: "Book not found"
     })
     req.profile = book
@@ -51,7 +51,7 @@ const bookByID = async (req, res, next, id) => {
     } 
 
     catch (err) {
-        return res.status('400').json({
+        return res.status(400).json({
         error: "Could not retrieve book"
     })
     }

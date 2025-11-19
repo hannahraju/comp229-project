@@ -30,7 +30,7 @@ const create = async (req, res) => {
 
 const list = async (req, res) => {
     try {
-        let checkouts = await Checkout.find().select(' item, outdate, duedate')
+        let checkouts = await Checkout.find().select('item , owner, outdate, duedate')
         res.json(checkouts)
     } 
 
@@ -41,11 +41,17 @@ const list = async (req, res) => {
     }
 }
 
-const getCheckoutByID = async (req, res, next, id) => {
+const getCheckoutsByUser = async(req, res, next, id) => {
+        res.json(req.profile.checkouts)
+    
+    
+}
+
+const getCheckoutById = async (req, res, next, id) => {
     try {
         let checkout = await Checkout.findById(id)
         if (!checkout)
-        return res.status('400').json({
+        return res.status(400).json({
         error: "This item does not exist "
     })
     req.profile = checkout
@@ -53,7 +59,7 @@ const getCheckoutByID = async (req, res, next, id) => {
     } 
 
     catch (err) {
-        return res.status('400').json({
+        return res.status(400).json({
         error: "Could not retrieve checkouts"
     })
     }
@@ -90,4 +96,4 @@ const remove = async (req, res) => {
     })
     }
 }
-export default { create, getCheckoutByID, read, list, remove, update }
+export default { create, getCheckoutsByUser, getCheckoutById, read, list, remove, update }

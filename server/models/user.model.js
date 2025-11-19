@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
 import crypto from'crypto'
 
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema
+
 const UserSchema = new mongoose.Schema({
 
     name:{

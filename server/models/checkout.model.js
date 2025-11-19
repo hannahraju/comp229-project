@@ -1,5 +1,9 @@
 import mongoose from 'mongoose'
-const Schema = mongoose.Schema;
+import BookSchema from '../models/book.model.js';
+import UserSchema from '../models/user.model.js';
+
+const Schema = mongoose.Schema
+
 
 const CheckoutSchema = new mongoose.Schema({
 
@@ -10,7 +14,7 @@ const CheckoutSchema = new mongoose.Schema({
 
     owner:{
         type: Schema.Types.ObjectId,
-        ref: "Owner"
+        ref: "User"
     },
     
     outdate:{
