@@ -24,9 +24,6 @@ const UserSchema = new mongoose.Schema({
         required: "Password is required"
     },
     
-    cardnumber:{
-        type: Number
-    },
 
     checkouts: [{
 
