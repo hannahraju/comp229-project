@@ -28,25 +28,16 @@ const UserSchema = new mongoose.Schema({
     },
 
     checkouts: [{
-        id:{
-            type: Schema.Types.ObjectId,
-            ref: 'Book'
-        },
-        duedate:{
-            type: Date,
-            default: Date.now + 14 
-        }
+
+        type: Schema.Types.ObjectId,
+        ref: 'Checkout'
     }],
 
     holds: [{
-        id:{
+        
             type: Schema.Types.ObjectId,
             ref: 'Book'
-        },
-        status:{
-            type: Boolean,
-            default: false 
-        }
+       
     }],
     
     fines:{
