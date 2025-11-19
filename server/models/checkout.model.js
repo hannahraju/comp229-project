@@ -1,6 +1,4 @@
 import mongoose from 'mongoose'
-import BookSchema from '../models/book.model.js';
-import UserSchema from '../models/user.model.js';
 
 const Schema = mongoose.Schema
 

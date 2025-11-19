@@ -96,11 +96,10 @@ const remove = async (req, res) => {
 
 const updateHolds = async(req, res) => {
 try {
-    let user = req.profile
+   
     let holds = req.profile.holds
-    holds.append(req.body)
-    user.updated = Date.now()
-    await user.save()
+    holds = extend(holds, req.body.holds)
+    $push : { holds : req.body }
     res.json(holds)
 } 
 catch (err) {
