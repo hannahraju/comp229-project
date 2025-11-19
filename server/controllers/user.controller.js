@@ -41,6 +41,11 @@ const list = async (req, res) => {
 }
 
 const getCheckouts = async (req, res) => {
+        
+        return res.json(req.profile.checkouts)
+
+
+    /*
     try{
         let user = req.profile
         if(!user){
@@ -55,6 +60,7 @@ const getCheckouts = async (req, res) => {
             error: errorHandler.getErrorMessage(err)
         })
     }
+        */
 }
 
 const userByID = async (req, res, next, id) => {
