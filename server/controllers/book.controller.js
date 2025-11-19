@@ -3,9 +3,16 @@ import extend from 'lodash/extend.js'
 import errorHandler from './error.controller.js'
 
 const create = async (req, res) => {
-    const book = new Book(req.body)
 
     try {
+        let book = await Book.findOne({"isbn": req.body.isbn})
+
+        if(book){
+            return res.status(400).json({
+                message: "Item with this ISBN already already exists. "
+            })
+        }
+        book = new Book(req.body)
         await book.save()
         return res.status(200).json({
         message: "Successfully added new book."

@@ -40,6 +40,23 @@ const list = async (req, res) => {
     }
 }
 
+const getCheckouts = async (req, res) => {
+    try{
+        let user = req.profile
+        if(!user){
+            return res.status(404).json({message: "User not found"})
+        }
+        res.json(user.checkouts)
+        
+    }
+
+    catch(err) {
+        return res.status(400).json({
+            error: errorHandler.getErrorMessage(err)
+        })
+    }
+}
+
 const userByID = async (req, res, next, id) => {
     try {
         let user = await User.findById(id)

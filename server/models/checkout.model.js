@@ -1,4 +1,6 @@
 import mongoose from 'mongoose'
+const Schema = mongoose.Schema;
+
 const CheckoutSchema = new mongoose.Schema({
 
     item:{
@@ -6,6 +8,11 @@ const CheckoutSchema = new mongoose.Schema({
         ref: 'Book'
     },
 
+    owner:{
+        type: Schema.Types.ObjectId,
+        ref: "Owner"
+    },
+    
     outdate:{
         type: Date,
         default: Date.now

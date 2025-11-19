@@ -1,3 +1,4 @@
+import Checkout from '../models/checkout.model.js'
 import User from '../models/user.model.js'
 import extend from 'lodash/extend.js'
 import errorHandler from './error.controller.js'
@@ -5,17 +6,17 @@ import errorHandler from './error.controller.js'
 
 const create = async (req, res) => {
     try {
-        let user = await User.findOne({ "email": req.body.email })
+        let checkout = await Checkout.findOne({ "_id": req.body._id })
         
-        if(user){
+        if(checkout){
             return res.status(400).json({
-                message: "Account with this email address already exists"
+                message: "ERROR: This item is already checked out"
             })
         }
-        user = new User(req.body)
-        await user.save()
+        checkout = new Checkout(req.body)
+        await checkout.save()
         return res.status(201).json({
-            message: "Successfully created a new account."
+            message: "Item successfully checked out."
         })
 
     }
@@ -29,8 +30,8 @@ const create = async (req, res) => {
 
 const list = async (req, res) => {
     try {
-        let users = await User.find().select('name email cardnumber checkouts holds fines created updated')
-        res.json(users)
+        let checkouts = await Checkout.find().select(' item, outdate, duedate')
+        res.json(checkouts)
     } 
 
     catch (err) {
@@ -40,51 +41,48 @@ const list = async (req, res) => {
     }
 }
 
-const userByID = async (req, res, next, id) => {
+const getCheckoutByID = async (req, res, next, id) => {
     try {
-        let user = await User.findById(id)
-        if (!user)
+        let checkout = await Checkout.findById(id)
+        if (!checkout)
         return res.status('400').json({
-        error: "User not found"
+        error: "This item does not exist "
     })
-    req.profile = user
+    req.profile = checkout
     next()
     } 
 
     catch (err) {
         return res.status('400').json({
-        error: "Could not retrieve user"
+        error: "Could not retrieve checkouts"
     })
     }
 }
+
 const read = (req, res) => {
-    req.profile.hashed_password = undefined
-    req.profile.salt = undefined
+    
     return res.json(req.profile)
-    }
-    const update = async (req, res) => {
-    try {
-        let user = req.profile
-        user = extend(user, req.body)
-        user.updated = Date.now()
-        await user.save()
-        user.hashed_password = undefined
-        user.salt = undefined
-        res.json(user)
-    } 
-    catch (err) {
-        return res.status(400).json({
+}
+const update = async (req, res) => {
+try {
+    let checkout = req.profile
+    checkout = extend(checkout, req.body)
+    checkout.outdate = Date.now()
+    checkout.duedate = Date.now() + 14
+    await checkout.save()
+    res.json(checkout)
+} 
+catch (err) {
+    return res.status(400).json({
         error: errorHandler.getErrorMessage(err)
     })
     }
 }
 const remove = async (req, res) => {
     try {
-        let user = req.profile
-        let deletedUser = await user.deleteOne()
-        deletedUser.hashed_password = undefined
-        deletedUser.salt = undefined
-        res.json(deletedUser)
+        let checkout = req.profile
+        let deletedCheckout = await checkout.deleteOne()
+        res.json(deletedCheckout)
     } 
     catch (err) {
         return res.status(400).json({
@@ -92,4 +90,4 @@ const remove = async (req, res) => {
     })
     }
 }
-export default { create, userByID, read, list, remove, update }
+export default { create, getCheckoutByID, read, list, remove, update }
