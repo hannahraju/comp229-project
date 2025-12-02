@@ -4,7 +4,6 @@
   "type": "module",
   "description": "COMP 229 Fall 2025 Final Project",
   "scripts": {
-    "start": "node server",
     "dev": "concurrently 'vite' \"nodemon ../server.js\"",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
