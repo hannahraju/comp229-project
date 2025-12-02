@@ -12,7 +12,7 @@ import path from "path";
 
 const app = express();
 //added this line to get render to work "no port specified, scanning" error
-//const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 
 const CURRENT_WORKING_DIR = process.cwd();
 app.use(express.static(path.join(CURRENT_WORKING_DIR, "dist/app")));
