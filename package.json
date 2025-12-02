@@ -7,7 +7,8 @@
     "dev": "concurrently 'vite' \"nodemon ../server.js\"",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start" : "node server.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
+    "@types/cookie-parser": "^1.4.10",
     "body-parser": "^2.2.0",
     "compression": "^1.8.1",
     "cookie-parser": "^1.4.7",
