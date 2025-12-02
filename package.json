@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "COMP 229 Fall 2025 Final Project",
-    "scripts": {
+  "scripts": {
     "dev": "concurrently 'vite' \"nodemon ../server.js\"",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -26,6 +26,7 @@
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
     "body-parser": "^2.2.0",
+    "cookie-parser": "^1.4.7",
     "crypto": "^1.0.1",
     "express": "^5.1.0",
     "express-jwt": "^8.5.1",
