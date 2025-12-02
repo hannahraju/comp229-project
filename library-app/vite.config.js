@@ -16,7 +16,8 @@ export default defineConfig({
         },
     },
     build: {
-        outDir: 'dist',
+        emptyOutDir: true,
+        outDir: '../dist/app',
         manifest: true,
         rollupOptions: {
             input: ["./src/main.jsx","./index.html"]
