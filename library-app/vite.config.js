@@ -19,7 +19,7 @@ export default defineConfig({
         outDir: 'dist',
         manifest: true,
         rollupOptions: {
-            input: "./src/main.jsx",
+            input: ["./src/main.jsx","./index.html"]
         },
-    },
+    }
 });
