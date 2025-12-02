@@ -6,17 +6,22 @@ import IconButton from "@mui/material/IconButton";
 import HomeIcon from "@mui/icons-material/Home";
 import Button from "@mui/material/Button";
 import auth from "../lib/auth-helper";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import logo from "../src/assets/images/book.PNG"
+
 const isActive = (location, path) =>
-location.pathname === path ? "#ff4081" : "#ffffff";
+location.pathname === path ? "#b75647ff" : "#ffffff";
 export default function Menu() {
 const navigate = useNavigate();
 const location = useLocation();
+
 return (
 <AppBar position="static">
 <Toolbar sx={{ display: "flex", gap: 2, alignItems: "center" }}>
+<img src={logo} width={100} alignItems />
+
 <Typography variant="h6" sx={{ flexGrow: 1 }}>
-LIBRARY
+THE LIBRARY 
 </Typography>
 <Link to="/">
 <IconButton aria-label="Home" sx={{ color: isActive(location, "/") }}>

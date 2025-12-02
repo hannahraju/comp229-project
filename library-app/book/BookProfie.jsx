@@ -10,17 +10,37 @@ Avatar,
 IconButton,
 Typography,
 Divider,
+Button,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import PersonIcon from "@mui/icons-material/Person";
 import DeleteBook from "./DeleteBook.jsx";
 import { read } from "../book/api-book.js";
-import { useLocation, Navigate, Link, useParams } from "react-router-dom";
+import { update } from "../user/api-user.js"
+import auth from "../lib/auth-helper.js";
+import { useLocation, Navigate, Link, useParams, redirectDocument } from "react-router-dom";
+
 
 export default function BookProfile() {
-const location = useLocation();
-const [book, setBook] = useState({});
-const { bookId } = useParams();
+
+    const location = useLocation();
+    const [book, setBook] = useState({});
+    const { bookId } = useParams();
+    const jwt = auth.isAuthenticated();
+    const [redirectToSignin, setRedirectToSignin] = useState(false);
+    
+
+    const clickHold = () => {
+        // if signed in, adds book to user's hold list
+        if(jwt){
+            update({userId})
+        
+        // if not signed in, redirect user to signin
+       }else{
+            setRedirectToSignin(true);
+       }
+       
+    }
 useEffect(() => {
 const abortController = new AbortController();
 const signal = abortController.signal;
@@ -34,6 +54,11 @@ setBook(data);
 return () => abortController.abort();
 }, [bookId]);
 
+ if (redirectToSignin) {
+        return (
+        <Navigate to="/signin" state={{ from: location.pathname }} replace />
+        )
+}
 return (
 <Paper
 elevation={4}
@@ -55,6 +80,7 @@ Book
 </Avatar>
 </ListItemAvatar>
 <ListItemText primary={book.title} secondary={book.author} />
+
 <ListItemSecondaryAction>
 <Link to={`/book/edit/${book._id}`}>
 <IconButton aria-label="Edit" color="primary">
@@ -68,12 +94,25 @@ Book
 <ListItem>
 <ListItemText
 primary={
-book.created
-? `Added: ${new Date(book.created).toDateString()}`
-: "Loading..."
+`Genre: ${book.genre}`
 }
 />
 </ListItem>
+<ListItem>
+<ListItemText
+primary={
+`Published year: ${book.year}`
+}
+/>
+</ListItem>
+<Button
+color="primary"
+variant="contained"
+onClick={clickHold}
+sx={{ margin: "0 auto", mb: 2 }}
+>
+Place Hold
+</Button>
 </List>
 </Paper>
 );

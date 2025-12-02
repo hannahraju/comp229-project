@@ -33,6 +33,8 @@ const[values, setValues] = useState({
     title: "",
     author: "",
     isbn: 0,
+    year: "",
+    genre: "",
     error: "",
 })
 
@@ -45,12 +47,14 @@ setValues({ ...values, [title]: event.target.value });
 const handleClose = () => {
 setOpen(false);
 };
-
+    
 const clickSubmit = () => {
 const book = {
 title: values.title || undefined,
 author: values.author || undefined,
-isbn: values.isbn || undefined
+isbn: values.isbn || undefined,
+year: values.year || undefined,
+genre: values.genre || undefined 
 }
 create(book).then((data) => {
 if (data.error) {
@@ -146,6 +150,22 @@ label="ISBN"
 sx={{ width: "100%", mb: 2 }}
 value={books.isbn}
 onChange={handleChange("isbn")}
+margin="normal"
+/>
+<TextField
+id="year"
+label="Year published"
+sx={{ width: "100%", mb: 2 }}
+value={books.year}
+onChange={handleChange("year")}
+margin="normal"
+/>
+<TextField
+id="genre"
+label="Genre"
+sx={{ width: "100%", mb: 2 }}
+value={books.genre}
+onChange={handleChange("genre")}
 margin="normal"
 />
 {books.error && (

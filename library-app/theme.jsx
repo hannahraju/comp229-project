@@ -4,9 +4,9 @@ const theme = createTheme({
 palette: {
 mode: 'light', // replaces `type: 'light'` in MUI v5
 primary: {
-light: '#5c67a3',
-main: '#3f4771',
-dark: '#2e355b',
+light: '#4d633a',
+main: '#4d633a',
+dark: '#4d633a',
 contrastText: '#fff',
 },
 secondary: {

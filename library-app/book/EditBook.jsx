@@ -17,6 +17,8 @@ const [values, setValues] = useState({
 title: "",
 author: "",
 isbn: "",
+year: "",
+genre: "",
 open: false,
 error: "",
 NavigateToProfile: false,
@@ -28,7 +30,7 @@ read({ bookId }, signal).then((data) => {
 if (data?.error) {
 setValues((prev) => ({ ...prev, error: data.error }));
 } else {
-setValues((prev) => ({ ...prev, title: data.title, author: data.author, isbn: data.isbn}));
+setValues((prev) => ({ ...prev, title: data.title, author: data.author, isbn: data.isbn, year: data.year, genre: data.genre}));
 }
 });
 return () => abortController.abort();
@@ -36,8 +38,10 @@ return () => abortController.abort();
 const clickSubmit = () => {
 const book = {
 title: values.title || undefined,
-author: values.title || undefined,
+author: values.author || undefined,
 isbn: values.isbn || undefined,
+year: values.year || undefined,
+genre: values.genre || undefined
 }
 update({ bookId }, book).then((data) => {
 if (data?.error) {
@@ -66,7 +70,10 @@ Edit Book
 </Typography>
 <TextField id="title" label="Title" className={values.textField} value={values.title} onChange={handleChange('title')} margin="normal"/><br/>
 <TextField id="author" type="author" label="Author" className={values.textField} value={values.author} onChange={handleChange('author')} margin="normal"/><br/>
-<TextField id="isbn" type="isbn" label="ISBN" className={values.textField} value={values.isbn} onChange={handleChange('isbn')} margin="normal"/>
+<TextField id="isbn" type="isbn" label="ISBN" className={values.textField} value={values.isbn} onChange={handleChange('isbn')} margin="normal"/><br/>
+<TextField id="year" type="year" label="Publish year" className={values.textField} value={values.year} onChange={handleChange('year')} margin="normal"/><br/>
+<TextField id="genre" type="genre" label="Genre" className={values.textField} value={values.genre} onChange={handleChange('genre')} margin="normal"/><br/>
+
 <br/> {
 values.error && (<Typography component="p" color="error">
 <Icon color="error" className={values.error}>error</Icon>
