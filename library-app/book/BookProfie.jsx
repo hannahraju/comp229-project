@@ -33,7 +33,6 @@ export default function BookProfile() {
     const clickHold = () => {
         // if signed in, adds book to user's hold list
         if(jwt){
-            update({userId})
         
         // if not signed in, redirect user to signin
        }else{
@@ -41,6 +40,8 @@ export default function BookProfile() {
        }
        
     }
+
+
 useEffect(() => {
 const abortController = new AbortController();
 const signal = abortController.signal;
@@ -53,6 +54,8 @@ setBook(data);
 });
 return () => abortController.abort();
 }, [bookId]);
+
+// If the user isn't signed in, redirect to Sign-in
 
  if (redirectToSignin) {
         return (
