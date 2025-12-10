@@ -26,8 +26,17 @@ import { Link as RouterLink } from "react-router-dom";
 
 export default function AddBook() {
 
+    const [openDialog, setOpen] = useState(false);
 
+    const handleOpen = () => {
+        setOpen(true);
+    };
+    
+    const handleClose = () => {
+        setOpen(false);
+    };
 
+   
     const[values, setValues] = useState({
         title: "",
         author: "",
@@ -35,25 +44,40 @@ export default function AddBook() {
         year: "",
         genre: "",
         error: "",
-    })
+    });
 
     const clickSubmit = () => {
+
+        
         const book = {
-            title: values.title || undefined,
-            author: values.author || undefined,
-            isbn: values.isbn || undefined,
-            year: values.year || undefined,
-            genre: values.genre || undefined 
+        title: values.title || undefined,
+        author: values.author || undefined,
+        isbn: values.isbn || undefined,
+        year: values.year || undefined,
+        genre: values.genre || undefined 
+
         }
+        
+        
         create(book).then((data) => {
-        if (data.error) {
-        setValues({ ...values, error: data.error });
-        } else {
-        setOpen(true);
-    }
-        window.location.reload();
-    });
+        
+            if (data.error) {
+                setValues({ ...values, error: data.error });
+            } 
+            
+            setOpen(true);
+
+            window.location.reload();
+
+
+            
+        });
+
     };
+        
+
+         
+    
     const handleChange = (title) => (event) => {
         setValues({ ...values, [title]: event.target.value });
     };
@@ -126,27 +150,39 @@ export default function AddBook() {
         </CardContent>
         <CardActions>
         <Button
-        color="primary"
-        variant="contained"
-        onClick={clickSubmit}
-        sx={{ margin: "0 auto", mb: 2 }}
+            color="primary"
+            variant="contained"
+            onClick={clickSubmit}
+            sx={{ margin: "0 auto", mb: 2 }}
         >
         Submit
         </Button>
         </CardActions>
+        
+        <Dialog open={openDialog} onClose={handleClose}>
+        <DialogTitle>New Book</DialogTitle>
+        <DialogContent>
+        <DialogContentText>
+        New book successfully added.
+        </DialogContentText>
+        <Button
+            color="primary"
+            variant="contained"
+            onClick={handleClose}
+            sx = {{margin:"0 auto", mb:2}}
+            >Ok</Button>
+
+        </DialogContent>
+        </Dialog>
+        
+       
+
         </Paper>
-    )
-}
+        
+    )}
 
 
-<Card
-sx={{
-maxWidth: 400,
-margin: "0 auto",
-mt: 3,
-p: 2,
-textAlign: "center",
-}}
->
+    /*
 
-</Card>
+
+    */

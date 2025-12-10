@@ -92,14 +92,7 @@ sx={{ color: "inherit" }}
 
 
 
-<Dialog open={open} onClose={handleClose}>
-<DialogTitle>New Book</DialogTitle>
-<DialogContent>
-<DialogContentText>
-New book successfully added.
-</DialogContentText>
-</DialogContent>
-</Dialog>
+
 </Paper>
 
 
