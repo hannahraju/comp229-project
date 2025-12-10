@@ -29,42 +29,17 @@ export default function Home() {
 
 const [books, setBooks] = useState([]);
 
-const[values, setValues] = useState({
-    title: "",
-    author: "",
-    isbn: 0,
-    year: "",
-    genre: "",
-    error: "",
-})
+
 
 const [open, setOpen] = useState(false);
 
-const handleChange = (title) => (event) => {
-setValues({ ...values, [title]: event.target.value });
-};
+
 
 const handleClose = () => {
 setOpen(false);
 };
     
-const clickSubmit = () => {
-const book = {
-title: values.title || undefined,
-author: values.author || undefined,
-isbn: values.isbn || undefined,
-year: values.year || undefined,
-genre: values.genre || undefined 
-}
-create(book).then((data) => {
-if (data.error) {
-setValues({ ...values, error: data.error });
-} else {
-setOpen(true);
-}
-window.location.reload();
-});
-};
+
 
 useEffect(() => {
 const abortController = new AbortController();
@@ -115,76 +90,7 @@ sx={{ color: "inherit" }}
 ))}
 </List>
 
-<Card
-sx={{
-maxWidth: 400,
-margin: "0 auto",
-mt: 3,
-p: 2,
-textAlign: "center",
-}}
->
-<CardContent>
-<Typography variant="h6" sx={{ fontSize: 18 }}>
-Add new book
-</Typography>
-<TextField
-id="title"
-label="Title"
-sx={{ width: "100%", mb: 2 }}
-value={books.title}
-onChange={handleChange("title")}
-margin="normal"
-/>
-<TextField
-id="author"
-label="Author"
-sx={{ width: "100%", mb: 2 }}
-value={books.author}
-onChange={handleChange("author")}
-margin="normal"
-/>
-<TextField
-id="isbn"
-label="ISBN"
-sx={{ width: "100%", mb: 2 }}
-value={books.isbn}
-onChange={handleChange("isbn")}
-margin="normal"
-/>
-<TextField
-id="year"
-label="Year published"
-sx={{ width: "100%", mb: 2 }}
-value={books.year}
-onChange={handleChange("year")}
-margin="normal"
-/>
-<TextField
-id="genre"
-label="Genre"
-sx={{ width: "100%", mb: 2 }}
-value={books.genre}
-onChange={handleChange("genre")}
-margin="normal"
-/>
-{books.error && (
-<Typography color="error" sx={{ mt: 1 }}>
-{values.error}
-</Typography>
-)}
-</CardContent>
-<CardActions>
-<Button
-color="primary"
-variant="contained"
-onClick={clickSubmit}
-sx={{ margin: "0 auto", mb: 2 }}
->
-Submit
-</Button>
-</CardActions>
-</Card>
+
 
 <Dialog open={open} onClose={handleClose}>
 <DialogTitle>New Book</DialogTitle>

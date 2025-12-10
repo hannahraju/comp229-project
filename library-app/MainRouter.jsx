@@ -10,6 +10,7 @@ import EditProfile from './user/EditProfile.jsx'
 import Menu from './components/Menu.jsx'
 import BookProfile from './book/BookProfie.jsx'
 import EditBook from './book/EditBook.jsx'
+import AddBook from "./book/AddBook.jsx"
 
 function MainRouter() {
     return (
@@ -23,7 +24,8 @@ function MainRouter() {
             <Route path="/user/:userId" element={<Profile/>}/>
             <Route path="/user/edit/:userId" element={<PrivateRoute><EditProfile/></PrivateRoute>}/>
             <Route path="/book/:bookId" element={<BookProfile/>}/>
-            <Route path="/book/edit/:bookId" element={<EditBook/>}/>
+            <Route path="/book/edit/:bookId" element={<PrivateRoute><EditBook/></PrivateRoute>}/>
+            <Route path="/add" element={<PrivateRoute><AddBook/></PrivateRoute>}/>
             
             </Routes>
         </div>

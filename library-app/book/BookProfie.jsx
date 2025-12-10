@@ -23,24 +23,13 @@ import { useLocation, Navigate, Link, useParams, redirectDocument } from "react-
 
 export default function BookProfile() {
 
+
     const location = useLocation();
     const [book, setBook] = useState({});
     const { bookId } = useParams();
     const jwt = auth.isAuthenticated();
     const [redirectToSignin, setRedirectToSignin] = useState(false);
     
-
-    const clickHold = () => {
-        // if signed in, adds book to user's hold list
-        if(jwt){
-        
-        // if not signed in, redirect user to signin
-       }else{
-            setRedirectToSignin(true);
-       }
-       
-    }
-
 
 useEffect(() => {
 const abortController = new AbortController();
@@ -108,14 +97,7 @@ primary={
 }
 />
 </ListItem>
-<Button
-color="primary"
-variant="contained"
-onClick={clickHold}
-sx={{ margin: "0 auto", mb: 2 }}
->
-Place Hold
-</Button>
+
 </List>
 </Paper>
 );
