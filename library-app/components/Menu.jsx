@@ -29,7 +29,7 @@ THE LIBRARY
 </IconButton>
 </Link>
 <Link to="/add">
-<Button sx={{ color: isActive(location, "/add") }}>Add</Button>
+<Button sx={{ color: isActive(location, "/add") }}>Add Book</Button>
 </Link>
 <Link to="/users">
 <Button sx={{ color: isActive(location, "/users") }}>Users</Button>
