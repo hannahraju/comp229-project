@@ -24,9 +24,7 @@ return (
 THE LIBRARY 
 </Typography>
 <Link to="/">
-<IconButton aria-label="Home" sx={{ color: isActive(location, "/") }}>
-<HomeIcon />
-</IconButton>
+<Button sx={{ color: isActive(location, "/") }}>Browse</Button>
 </Link>
 <Link to="/add">
 <Button sx={{ color: isActive(location, "/add") }}>Add Book</Button>
